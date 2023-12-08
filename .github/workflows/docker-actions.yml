@@ -32,12 +32,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: bkirsan/github
-       -
-        name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: whoami
