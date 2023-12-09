@@ -3,58 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taş-Kağıt-Makas Oyunu</title>
+    <title>Taş Kağıt Makas</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
+
         h1 {
             color: #333;
         }
+
         #choices {
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
         }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
         #result {
             margin-top: 20px;
             font-size: 18px;
-            font-weight: bold;
             color: #333;
         }
     </style>
 </head>
 <body>
 
-    <h1>Taş-Kağıt-Makas Oyunu</h1>
+    <h1>Taş Kağıt Makas Oyunu</h1>
 
     <div id="choices">
-        <button onclick="makeChoice('Taş')">Taş</button>
-        <button onclick="makeChoice('Kağıt')">Kağıt</button>
-        <button onclick="makeChoice('Makas')">Makas</button>
+        <button onclick="playGame('taş')">Taş</button>
+        <button onclick="playGame('kağıt')">Kağıt</button>
+        <button onclick="playGame('makas')">Makas</button>
     </div>
 
     <div id="result"></div>
 
     <script>
-        function makeChoice(userChoice) {
-            var choices = ["Taş", "Kağıt", "Makas"];
+        function playGame(userChoice) {
+            var choices = ['taş', 'kağıt', 'makas'];
             var computerChoice = choices[Math.floor(Math.random() * 3)];
 
-            var result = "";
+            var result = '';
 
             if (userChoice === computerChoice) {
-                result = "Berabere!";
+                result = 'Berabere!';
             } else if (
-                (userChoice === "Taş" && computerChoice === "Makas") ||
-                (userChoice === "Kağıt" && computerChoice === "Taş") ||
-                (userChoice === "Makas" && computerChoice === "Kağıt")
+                (userChoice === 'taş' && computerChoice === 'makas') ||
+                (userChoice === 'kağıt' && computerChoice === 'taş') ||
+                (userChoice === 'makas' && computerChoice === 'kağıt')
             ) {
-                result = "Kazandın!";
+                result = 'Kazandınız!';
             } else {
-                result = "Bilgisayar Kazandı!";
+                result = 'Kaybettiniz!';
             }
 
-            document.getElementById("result").innerText = "Bilgisayarın Seçimi: " + computerChoice + ". " + result;
+            document.getElementById('result').innerHTML = `
+                <p>Sizin Seçiminiz: ${userChoice}</p>
+                <p>Bilgisayarın Seçimi: ${computerChoice}</p>
+                <p>Sonuç: ${result}</p>
+            `;
         }
     </script>
 
