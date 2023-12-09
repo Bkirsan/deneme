@@ -31,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: bkirsan/github
+          tags: bkirsan/github:latest
