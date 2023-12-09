@@ -1,7 +1,7 @@
-name: remote ssh command
+name: Remote and Command AWS
 on:
   workflow_run:
-    workflows: ["ci"]
+    workflows: ["Docker Image Build and Push"]
     types:
       - completed
 
